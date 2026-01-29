@@ -149,6 +149,21 @@ class CVSchema(BaseModel):
         description="Volunteer work and community involvement"
     )
 
+    preferences: Optional[str] = Field(
+        None,
+        description="Work preferences (e.g., remote, hybrid, office, relocation willingness)"
+    )
+
+    laptop_requirements: Optional[str] = Field(
+        None,
+        description="Laptop or hardware requirements/preferences"
+    )
+
+    expected_salary: Optional[str] = Field(
+        None,
+        description="Expected salary range or compensation expectations"
+    )
+
     class Config:
         """Pydantic model configuration."""
         json_schema_extra = {
