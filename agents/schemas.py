@@ -19,7 +19,9 @@ class ContactInformation(BaseModel):
     location: Optional[str] = Field(None, description="City, State/Country")
     linkedin: Optional[HttpUrl] = Field(None, description="LinkedIn profile URL")
     github: Optional[HttpUrl] = Field(None, description="GitHub profile URL")
-    portfolio: Optional[HttpUrl] = Field(None, description="Portfolio or personal website URL")
+    portfolio: Optional[HttpUrl] = Field(
+        None, description="Portfolio or personal website URL"
+    )
 
 
 class WorkExperience(BaseModel):
@@ -29,10 +31,16 @@ class WorkExperience(BaseModel):
     company: str = Field(..., description="Company or organization name")
     location: Optional[str] = Field(None, description="Job location")
     start_date: Optional[date] = Field(None, description="Start date of employment")
-    end_date: Optional[date] = Field(None, description="End date of employment (null if current)")
+    end_date: Optional[date] = Field(
+        None, description="End date of employment (null if current)"
+    )
     is_current: bool = Field(False, description="Whether this is the current position")
-    description: Optional[str] = Field(None, description="Job description and responsibilities")
-    achievements: List[str] = Field(default_factory=list, description="Key achievements and accomplishments")
+    description: Optional[str] = Field(
+        None, description="Job description and responsibilities"
+    )
+    achievements: List[str] = Field(
+        default_factory=list, description="Key achievements and accomplishments"
+    )
 
 
 class Education(BaseModel):
@@ -52,11 +60,21 @@ class Certification(BaseModel):
     """Professional certification entry."""
 
     name: str = Field(..., description="Certification name")
-    issuing_organization: str = Field(..., description="Organization that issued the certification")
-    issue_date: Optional[date] = Field(None, description="Date certification was issued")
-    expiration_date: Optional[date] = Field(None, description="Expiration date if applicable")
-    credential_id: Optional[str] = Field(None, description="Certification credential ID")
-    credential_url: Optional[HttpUrl] = Field(None, description="URL to verify certification")
+    issuing_organization: str = Field(
+        ..., description="Organization that issued the certification"
+    )
+    issue_date: Optional[date] = Field(
+        None, description="Date certification was issued"
+    )
+    expiration_date: Optional[date] = Field(
+        None, description="Expiration date if applicable"
+    )
+    credential_id: Optional[str] = Field(
+        None, description="Certification credential ID"
+    )
+    credential_url: Optional[HttpUrl] = Field(
+        None, description="URL to verify certification"
+    )
 
 
 class Project(BaseModel):
@@ -65,11 +83,15 @@ class Project(BaseModel):
     name: str = Field(..., description="Project name")
     description: str = Field(..., description="Project description")
     role: Optional[str] = Field(None, description="Role in the project")
-    technologies: List[str] = Field(default_factory=list, description="Technologies used")
+    technologies: List[str] = Field(
+        default_factory=list, description="Technologies used"
+    )
     start_date: Optional[date] = Field(None, description="Project start date")
     end_date: Optional[date] = Field(None, description="Project end date")
     url: Optional[HttpUrl] = Field(None, description="Project URL or repository")
-    highlights: List[str] = Field(default_factory=list, description="Key achievements or highlights")
+    highlights: List[str] = Field(
+        default_factory=list, description="Key achievements or highlights"
+    )
 
 
 class Language(BaseModel):
@@ -78,7 +100,7 @@ class Language(BaseModel):
     language: str = Field(..., description="Language name")
     proficiency: str = Field(
         ...,
-        description="Proficiency level (e.g., Native, Fluent, Professional, Intermediate, Basic)"
+        description="Proficiency level (e.g., Native, Fluent, Professional, Intermediate, Basic)",
     )
 
 
@@ -86,7 +108,9 @@ class Skill(BaseModel):
     """Skill entry with optional proficiency level."""
 
     name: str = Field(..., description="Skill name")
-    category: Optional[str] = Field(None, description="Skill category (e.g., Programming, Soft Skills)")
+    category: Optional[str] = Field(
+        None, description="Skill category (e.g., Programming, Soft Skills)"
+    )
     proficiency: Optional[str] = Field(None, description="Proficiency level")
 
 
@@ -97,60 +121,61 @@ class CVSchema(BaseModel):
     This is the main model that encompasses all sections of a CV.
     """
 
-    contact_info: ContactInformation = Field(..., description="Personal contact information")
+    contact_info: ContactInformation = Field(
+        ..., description="Personal contact information"
+    )
 
     summary: Optional[str] = Field(
-        None,
-        description="Professional summary or objective statement"
+        None, description="Professional summary or objective statement"
     )
 
     work_experience: List[WorkExperience] = Field(
         default_factory=list,
-        description="List of work experiences, ordered by most recent first"
+        description="List of work experiences, ordered by most recent first",
     )
 
     education: List[Education] = Field(
         default_factory=list,
-        description="List of educational qualifications, ordered by most recent first"
+        description="List of educational qualifications, ordered by most recent first",
     )
 
     skills: List[Skill] = Field(
-        default_factory=list,
-        description="List of skills and competencies"
+        default_factory=list, description="List of skills and competencies"
     )
 
     certifications: List[Certification] = Field(
-        default_factory=list,
-        description="List of professional certifications"
+        default_factory=list, description="List of professional certifications"
     )
 
     projects: List[Project] = Field(
-        default_factory=list,
-        description="List of notable projects"
+        default_factory=list, description="List of notable projects"
     )
 
     languages: List[Language] = Field(
-        default_factory=list,
-        description="List of languages spoken"
+        default_factory=list, description="List of languages spoken"
     )
 
-    awards: List[str] = Field(
+    achievements: List[str] = Field(
         default_factory=list,
-        description="List of awards and recognitions"
+        description="List of professional achievements, honors, and recognitions",
     )
 
-    publications: List[str] = Field(
-        default_factory=list,
-        description="List of publications or papers"
+    preferences: Optional[str] = Field(
+        None,
+        description="Work preferences (e.g., remote, hybrid, office, relocation willingness)",
     )
 
-    volunteer_experience: List[str] = Field(
-        default_factory=list,
-        description="Volunteer work and community involvement"
+    laptop_requirements: Optional[str] = Field(
+        None, description="Laptop or hardware requirements/preferences"
+    )
+
+    expected_salary: Optional[str] = Field(
+        None, description="Expected salary range or compensation expectations"
     )
 
     class Config:
         """Pydantic model configuration."""
+
         json_schema_extra = {
             "example": {
                 "contact_info": {
@@ -159,7 +184,7 @@ class CVSchema(BaseModel):
                     "phone": "+1-555-0123",
                     "location": "San Francisco, CA",
                     "linkedin": "https://linkedin.com/in/johndoe",
-                    "github": "https://github.com/johndoe"
+                    "github": "https://github.com/johndoe",
                 },
                 "summary": "Experienced software engineer with 5+ years building scalable web applications",
                 "work_experience": [
@@ -173,13 +198,17 @@ class CVSchema(BaseModel):
                         "description": "Lead backend development for cloud infrastructure",
                         "achievements": [
                             "Reduced API response time by 40%",
-                            "Mentored 3 junior engineers"
-                        ]
+                            "Mentored 3 junior engineers",
+                        ],
                     }
                 ],
                 "skills": [
-                    {"name": "Python", "category": "Programming", "proficiency": "Expert"},
-                    {"name": "AWS", "category": "Cloud", "proficiency": "Advanced"}
-                ]
+                    {
+                        "name": "Python",
+                        "category": "Programming",
+                        "proficiency": "Expert",
+                    },
+                    {"name": "AWS", "category": "Cloud", "proficiency": "Advanced"},
+                ],
             }
         }
