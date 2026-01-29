@@ -134,9 +134,9 @@ class CVSchema(BaseModel):
         description="List of languages spoken"
     )
 
-    awards: List[str] = Field(
+    achievements: List[str] = Field(
         default_factory=list,
-        description="List of awards and recognitions"
+        description="List of professional achievements, honors, and recognitions"
     )
 
     publications: List[str] = Field(
