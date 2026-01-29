@@ -7,7 +7,7 @@ to ask questions about the CV or request analysis.
 
 import os
 from pathlib import Path
-from agents.agent import CVExtractionAgent
+from agent import CVExtractionAgent
 
 
 def load_cv_from_file(filename: str) -> str:
@@ -29,7 +29,7 @@ def load_cv_from_file(filename: str) -> str:
     if not cv_path.exists():
         raise FileNotFoundError(f"CV file not found: {cv_path}")
 
-    with open(cv_path, 'r', encoding='utf-8') as f:
+    with open(cv_path, "r", encoding="utf-8") as f:
         return f.read()
 
 
@@ -84,7 +84,9 @@ def main():
 
     # Chat loop
     print("💬 Chat Mode - Ask questions about the CV")
-    print("   Commands: 'summary' (new summary), 'clear' (clear history), 'quit' (exit)\n")
+    print(
+        "   Commands: 'summary' (new summary), 'clear' (clear history), 'quit' (exit)\n"
+    )
 
     session_id = "main_session"
 
@@ -96,16 +98,16 @@ def main():
                 continue
 
             # Handle commands
-            if user_input.lower() in ['quit', 'exit', 'q']:
+            if user_input.lower() in ["quit", "exit", "q"]:
                 print("\n👋 Goodbye!")
                 break
 
-            elif user_input.lower() == 'clear':
+            elif user_input.lower() == "clear":
                 agent.clear_history(session_id)
                 print("🗑️  Chat history cleared.\n")
                 continue
 
-            elif user_input.lower() == 'summary':
+            elif user_input.lower() == "summary":
                 print("\n📋 Generating new summary...\n")
                 summary = agent.generate_summary()
                 print("Summary:")

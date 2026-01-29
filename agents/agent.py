@@ -5,7 +5,7 @@ CV Extraction Agent using AWS Bedrock and LangChain.
 from langchain_aws import ChatBedrock
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.chat_history import InMemoryChatMessageHistory
-from agents.templates import cv_chat_template, summary_template
+from templates import cv_chat_template, summary_template
 
 # Use simple model ID instead of ARN
 MODEL_ID = "us.amazon.nova-pro-v1:0"
@@ -76,7 +76,7 @@ class CVExtractionAgent:
         """
         response = self.conversational_chain.invoke(
             {"input": user_input, "cv_text": self.cv_text},
-            config={"configurable": {"session_id": session_id}}
+            config={"configurable": {"session_id": session_id}},
         )
         return response.content
 
