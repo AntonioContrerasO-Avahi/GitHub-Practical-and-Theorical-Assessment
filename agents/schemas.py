@@ -134,20 +134,6 @@ class CVSchema(BaseModel):
         description="List of languages spoken"
     )
 
-    awards: List[str] = Field(
-        default_factory=list,
-        description="List of awards and recognitions"
-    )
-
-    publications: List[str] = Field(
-        default_factory=list,
-        description="List of publications or papers"
-    )
-
-    volunteer_experience: List[str] = Field(
-        default_factory=list,
-        description="Volunteer work and community involvement"
-    )
 
     class Config:
         """Pydantic model configuration."""
