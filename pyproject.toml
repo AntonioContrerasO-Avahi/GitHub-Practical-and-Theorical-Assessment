@@ -5,15 +5,25 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "absl-py>=2.4.0",
+    "bert-score>=0.3.13",
     "boto3>=1.42.44",
+    "datasets>=4.5.0",
+    "evaluate>=0.4.6",
     "gradio>=6.5.1",
     "langchain>=1.2.9",
     "langchain-aws>=1.2.2",
     "langchain-community>=0.4.1",
     "langgraph>=1.0.8",
     "langgraph-checkpoint-sqlite>=3.0.3",
+    "matplotlib>=3.10.8",
+    "nltk>=3.9.2",
     "pypdf>=6.6.2",
     "pypdfium2>=5.3.0",
     "python-dotenv>=1.2.1",
+    "rouge-score>=0.1.2",
+    "seaborn>=0.13.2",
     "sqlite-vec>=0.1.6",
+    "torch>=2.10.0",
+    "transformers>=5.1.0",
 ]
