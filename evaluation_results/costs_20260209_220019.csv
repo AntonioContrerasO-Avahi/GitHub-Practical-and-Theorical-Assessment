@@ -1,4 +1,0 @@
-eval_id,model,total_input_tokens,total_output_tokens,input_cost_usd,output_cost_usd,total_cost_usd,cost_per_query_usd
-20260209_220019,arn:aws:bedrock:us-east-1:867344470723:inference-profile/us.anthropic.claude-3-5-haiku-20241022-v1:0,0,0,0.0,0.0,0.0,0.0
-20260209_220019,arn:aws:bedrock:us-east-1:867344470723:inference-profile/global.amazon.nova-2-lite-v1:0,0,0,0.0,0.0,0.0,0.0
-20260209_220019,arn:aws:bedrock:us-east-1:867344470723:inference-profile/us.anthropic.claude-3-haiku-20240307-v1:0,0,0,0.0,0.0,0.0,0.0

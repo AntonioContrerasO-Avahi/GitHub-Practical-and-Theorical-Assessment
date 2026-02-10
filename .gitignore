@@ -1,0 +1,96 @@
+# ============================================================================================================
+# .gitignore - Only Python files (.py) and PDFs (.pdf) should be uploaded
+# ============================================================================================================
+
+# Ignore all files by default
+*
+
+# But track these file types
+!*.py
+!*.pdf
+!*.md
+!*.txt
+!*.toml
+!*.lock
+!*.ipynb
+!.gitignore
+
+# Ignore Python cache and build artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Ignore virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Ignore databases
+*.sqlite
+*.db
+*.sqlite3
+
+# Ignore logs
+logs/
+*.log
+
+# Ignore model artifacts and outputs
+fine_tuned_model/
+*.bin
+*.safetensors
+*.h5
+*.ckpt
+*.pt
+*.pth
+
+# Ignore evaluation results
+*.csv
+*.json
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.bak
+
+# BUT allow specific documentation files
+!README.md
+!TASKS-8-10-SUMMARY.md
+!*-README.md
+!requirements.txt
+!task-*-requirements.txt
