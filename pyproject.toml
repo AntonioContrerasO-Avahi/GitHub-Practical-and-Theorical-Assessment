@@ -10,6 +10,7 @@ dependencies = [
     "bert-score>=0.3.13",
     "boto3>=1.42.44",
     "datasets>=4.5.0",
+    "deepagents>=0.3.12",
     "evaluate>=0.4.6",
     "gradio>=6.5.1",
     "langchain>=1.2.9",
