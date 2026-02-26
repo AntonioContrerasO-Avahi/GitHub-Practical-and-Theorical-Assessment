@@ -1,72 +1,117 @@
-# Python
+# ============================================================================================================
+# .gitignore - Merged: whitelist approach + explicit ignores for key paths
+# ============================================================================================================
+
+# Ignore all files by default
+*
+
+# Track these file types
+!*.py
+!*.pdf
+!*.md
+!*.txt
+!*.toml
+!*.lock
+!*.ipynb
+!.gitignore
+
+# Track directories (needed for nested whitelisted files)
+!*/
+
+# ============================================
+# Python cache and build artifacts (explicit)
+# ============================================
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
 *.py[cod]
 *$py.class
 *.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
 *.egg-info/
-.installed.cfg
 *.egg
-MANIFEST
+dist/
+build/
 
-# Virtual Environment
+# ============================================
+# Virtual environments
+# ============================================
 .venv/
 venv/
 ENV/
 env/
 
+# ============================================
 # Jupyter Notebook
+# ============================================
 .ipynb_checkpoints/
-*.ipynb_checkpoints
 
-# Claude Configuration
-.claude/
-
-# Gradio
-.gradio/
-
-# Generated Databases
-*.sqlite
-*.db
-chatbot_memory.sqlite
-vector_store.db
-
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-._*
-
-# IDEs
+# ============================================
+# IDE files
+# ============================================
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# Environment variables
+# ============================================
+# Security-sensitive files (always ignore)
+# ============================================
 .env
 .env.local
-
-# Logs
-*.log
-
-# AWS
 .aws/
 credentials
 
-# Temporary files
+# ============================================
+# Claude configuration
+# ============================================
+.claude/
+
+# ============================================
+# Databases and model artifacts
+# ============================================
+*.sqlite
+*.db
+*.sqlite3
+chatbot_memory.sqlite
+vector_store.db
+fine_tuned_model/
+*.bin
+*.safetensors
+*.h5
+*.ckpt
+*.pt
+*.pth
+
+# ============================================
+# Logs and temporary files
+# ============================================
+*.log
+logs/
 *.tmp
 *.temp
+*.bak
+
+# ============================================
+# macOS
+# ============================================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+
+# ============================================
+# Gradio
+# ============================================
+.gradio/
+
+# ============================================
+# Explicit exceptions
+# ============================================
+!README.md
+!TASKS-8-10-SUMMARY.md
+!*-README.md
+!requirements.txt
+!task-*-requirements.txt

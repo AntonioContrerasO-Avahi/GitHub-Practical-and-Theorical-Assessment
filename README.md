@@ -1,10 +1,13 @@
 # AWS Bedrock Practice Workbook
 
-This repository contains a comprehensive Jupyter notebook workbook for learning and practicing AWS Bedrock capabilities with Claude AI models.
+This repository contains a comprehensive Jupyter notebook workbook for learning and practicing AWS Bedrock capabilities with Claude AI models, plus a complete multi-agent code review application.
 
 ## Overview
 
-The workbook covers 7 practical exercises ranging from basic model invocation to advanced RAG (Retrieval-Augmented Generation) systems with multi-turn conversations and embeddings. 3 more to come
+The repository includes:
+- **Tasks 1-7**: Basic to advanced AWS Bedrock practices (model invocation, RAG, embeddings)
+- **Task 8**: Model Evaluation, Fine-tuning, and Guardrails
+- **Project**: Multi-Agent Code Review System using DeepAgents
 
 ## Target Environment
 
@@ -82,7 +85,7 @@ If you're running in a SageMaker Domain, **leave the code as-is**. The execution
 
 ### What's Included
 
-The notebook covers the following practices:
+#### Tasks 1-7 (task-1-to-6.ipynb)
 
 1. **Setup Confirmation** - Verify AWS Bedrock connectivity
 2. **Practice 1: First Call to Claude** - Basic model invocation
@@ -92,6 +95,27 @@ The notebook covers the following practices:
 6. **Practice 5: Multi-turn Conversations** - Chatbot with persistent memory and summarization
 7. **Practice 6: Basic RAG with Embeddings** - Document ingestion and vector search
 8. **Practice 7: Advanced RAG System** - Complete RAG pipeline with Gradio UI
+
+#### Task 8 (task-8.ipynb)
+
+- **Model Evaluation**: Comparing model performance with metrics
+- **Fine-tuning**: Advanced model customization techniques
+- **Guardrails**: Implementing safety controls and content filtering
+
+#### Multi-Agent Code Review Project (project/)
+
+A production-ready code review system using DeepAgents framework:
+- **4 Specialized Agents**: Style, Security, Performance, and Architecture reviewers
+- **Vector Database**: ChromaDB with Python style guidelines
+- **Gradio UI**: Interactive web interface for code analysis
+- **AWS Bedrock**: Claude Sonnet 4.5 (coordinator) + Claude Haiku (subagents)
+
+**Setup**: No extra configuration needed!
+```bash
+cd project/
+uv sync  # Installs all dependencies
+python3 app.py  # Launches the Gradio interface
+```
 
 ## Troubleshooting
 
@@ -122,9 +146,15 @@ The notebook covers the following practices:
 ```
 .
 ├── README.md                           # This file
-├── task-1-to-6.ipynb                  # Main practice notebook
-├── vector_store.db                    # Generated SQLite vector database (after running)
-├── chatbot_memory.sqlite              # Generated conversation memory (after running)
+├── task-1-to-6.ipynb                  # Tasks 1-7: Basic to Advanced Bedrock
+├── task-8.ipynb                       # Task 8: Evaluation, Fine-tuning, Guardrails
+├── project/                           # Multi-Agent Code Review System
+│   ├── app.py                         # Gradio web interface
+│   ├── coordinator.py                 # DeepAgents coordinator and subagents
+│   ├── ingestion.py                   # Vector store data ingestion
+│   └── chroma_db/                     # ChromaDB vector database
+├── vector_store.db                    # Generated SQLite vector database (Tasks 1-7)
+├── chatbot_memory.sqlite              # Generated conversation memory (Tasks 1-7)
 └── styleguide _ Style guides...pdf    # Sample PDF for RAG exercises
 ```
 
@@ -141,6 +171,8 @@ For issues or questions related to AWS Bedrock, refer to the [official AWS Bedro
 
 ---
 
-**Last Updated**: 2026-02-06
+**Last Updated**: 2026-02-10
 **AWS Region**: us-east-1
-**Primary Model**: Claude 3.5 Haiku (us.anthropic.claude-3-5-haiku-20241022-v1:0)
+**Primary Models**:
+- Tasks 1-7: Claude 3.5 Haiku (us.anthropic.claude-3-5-haiku-20241022-v1:0)
+- Project: Claude Sonnet 4.5 + Claude Haiku 3.5
