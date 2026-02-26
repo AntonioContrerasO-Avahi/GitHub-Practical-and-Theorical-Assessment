@@ -1,0 +1,54 @@
+import secrets
+
+from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi.security import HTTPBasic, HTTPBasicCredentials
+
+app = FastAPI(title="Practice 4 - Basic Auth")
+security = HTTPBasic()
+
+fake_users_db = {
+    "admin": {
+        "username": "admin",
+        "full_name": "Admin User",
+        "email": "admin@example.com",
+        "password": "secret123",
+    },
+    "oscar": {
+        "username": "oscar",
+        "full_name": "Oscar Marin",
+        "email": "oscar@example.com",
+        "password": "password123",
+    },
+}
+
+
+def get_current_user(credentials: HTTPBasicCredentials = Depends(security)):
+    user = fake_users_db.get(credentials.username)
+    if not user or not secrets.compare_digest(
+        credentials.password.encode("utf8"), user["password"].encode("utf8")
+    ):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect username or password",
+            headers={"WWW-Authenticate": "Basic"},
+        )
+    return user
+
+
+@app.get("/", tags=["Health"])
+async def read_root(name: str):
+    return {"message": f"{name.title()} was here!"}
+
+
+@app.get("/user/me", tags=["User"])
+async def read_current_user(current_user: dict = Depends(get_current_user)):
+    return {
+        "username": current_user["username"],
+        "full_name": current_user["full_name"],
+        "email": current_user["email"],
+    }
+
+
+@app.get("/healthcheck", tags=["Public"])
+async def public_route():
+    return {"message": "Hello There, this is public. No auth required"}
