@@ -1,0 +1,10 @@
+services:
+  ingest:
+    build: .
+    container_name: avahi_ingest
+    volumes:
+      - ./texts:/app/texts         # swap docs without rebuild
+      - ./logs:/var/log/avahi      # persist logs on host
+    env_file:
+      - .env
+    restart: unless-stopped        # restart container if it crashes

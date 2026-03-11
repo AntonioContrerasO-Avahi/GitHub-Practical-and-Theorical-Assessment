@@ -1,0 +1,11 @@
+# /etc/systemd/system/avahi-ingest.service
+
+[Unit]
+Description=Avahi RAG Ingestion Pipeline
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/Users/antonio.contreras/Desktop/GitHub-Practical-and-Theorical-Assessment/03-task-automation/run_ingest.sh
+WorkingDirectory=/Users/antonio.contreras/Desktop/GitHub-Practical-and-Theorical-Assessment/03-task-automation
+User=antonio.contreras
