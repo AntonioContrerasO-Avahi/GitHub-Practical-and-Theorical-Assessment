@@ -1,0 +1,8 @@
+# Generated output directories from script runs
+*-workspace/
+poetry-basics/
+conflict-resolution/
+venv-practice/
+projects/
+benchmark-workspace/
+my-fastapi-project/
